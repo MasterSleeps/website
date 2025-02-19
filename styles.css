@@ -1,0 +1,332 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: #F5F5F5;
+    color: black;
+    overflow-x: hidden;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;  }
+  
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Navigation Bar */
+  .navbar {
+    background-color: black;
+    overflow: hidden; /* Changed from overflow: auto; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .navbar ul li {
+    flex: 1;
+  }
+  
+  .navbar ul li a {
+    color: #F5F5F5;
+    text-decoration: none;
+    padding: 12px 16px;
+    display: block;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    transform-origin: center;
+  }
+  
+  .navbar ul li a:hover, .navbar ul li a.active
+
+   {
+    background-color: gray;
+    transform: scale(1.05);
+  }
+
+  /* Home Section */
+  #home, #about-us, #news-events, #volunteering, #adoption-process {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 2;
+  }
+  
+  .pet-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 15px;
+  }
+  .large-photo {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 15px;
+}
+  
+  .pet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+    box-sizing: border-box;
+  }
+  
+  .pet {
+    flex: 1 1 calc(25% - 40px); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 2;
+    color: white;
+    margin: 20px;
+    background: black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    padding: 15px;
+  }
+  
+  .pet:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    background-color: gray;
+    color: white;
+  }
+  .card {
+    flex: 1 1 calc(25% - 40px); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 2;
+    color: white;
+    margin: 20px;
+    background: black;
+    border-radius: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+  }
+  
+  .pet img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+    object-fit: cover;
+  }
+  
+  /* Buttons */
+  button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #4d82f4;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition:transform 0.2s;
+  }
+  
+  button:hover {
+    background-color: #375d9c;
+    transform: scale(1.05);
+  }
+  
+  /* Forms */
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="number"],
+  form select,
+  form textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin: 10px auto;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: white;
+    color: black;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  form button {
+    margin-top: 20px;
+  }
+  
+  /* Social Media Links */
+  #contact-us p a {
+    color: #4d82f4;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  #contact-us p a:hover {
+    text-decoration: underline;
+  }
+  #result {
+    color: #ffba08;
+  }
+  .thank-you-message {
+    color: #ffba08;
+  }
+  
+
+  @media (min-width: 1200px) {
+    .pet {
+      flex: 1 1 calc(25% - 40px); 
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .pet {
+      flex: 1 1 calc(25% - 40px); 
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .pet {
+      flex: 1 1 calc(33.33% - 40px); 
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    .pet {
+      flex: 1 1 calc(50% - 40px); 
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .pet {
+      flex: 1 1 100%; 
+      margin: 15px auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar ul {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar ul li {
+      flex: none;
+      width: 100%;
+    }
+  
+    .navbar ul li a {
+      padding: 12px 0;
+    }
+  }
+  /*Fonts */
+
+
+
+
+.intro {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+  .roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+  
+  
