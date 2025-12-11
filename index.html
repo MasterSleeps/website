@@ -3,188 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Adoption Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Catherine's Nail Studio | Elegant Nail Artistry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES (Change colors here) --- */
+        :root {
+            --primary-color: #d4a373; /* Gold/Bronze */
+            --secondary-color: #faedcd; /* Soft Cream */
+            --accent-color: #333333; /* Dark Slate text */
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--accent-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover { transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section { padding: 4rem 2rem; }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* --- SERVICES MENU --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .service-card h3 { margin-bottom: 1rem; font-family: var(--font-heading); }
+        .price { font-size: 1.2rem; font-weight: bold; color: var(--primary-color); margin-top: 1rem; display: block;}
+
+        /* --- ABOUT SECTION --- */
+        .about { background-color: var(--secondary-color); }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .about-text { flex: 1; }
+        .about-img { 
+            flex: 1; 
+            min-width: 300px;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        .gallery-item img:hover { transform: scale(1.02); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-info { margin-bottom: 1.5rem; }
+        .social-links a { margin: 0 10px; color: var(--primary-color); font-size: 1.2rem;}
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplified for template */
+            .logo { font-size: 1.2rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#pets">Pets</a></li>
-            <li><a href="#adoption-process">Adoption Process</a></li>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#news-events">News and Events</a></li>
-            <li><a href="#volunteering">Volunteering</a></li>
-            <li><a href="#contact-us">Contact Us</a></li>
-        </ul>
-    </nav>
 
-    <!-- Home Section -->
-    <div id="home">
-        <h1>Welcome to Our Pet Adoption Center!</h1>
-        <p>Our mission is to find loving homes for pets in need. We have a variety of pets including dogs, cats, rabbits, and more who are waiting to meet you! Adopting a pet is a wonderful way to bring joy to your life and give a furry friend a forever home.</p>
-        <p>Browse through our available pets, learn more about the adoption process, and see how you can get involved. Whether you're looking to adopt, volunteer, or donate, there's a place for you here at our center.</p>
-        <h1>Our Mission</h1>
-        <img src="images/dog_cage.jpg" alt="dog" class="pet-photo">
-        <p>Is to prevent the crowding of shelters by relying on the communities for shelters.</p>
-        <p>The shelters in Arizona are operating at critical capacity and to accommodate more pets are dividing the living spaces of current animals to allow for more pets to be rescued.</p>
-    </div>
+    <header>
+        <nav>
+            <div class="logo">Catherine's Nail Studio</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact" class="cta-btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Pets Section -->
-    <div id="pets" style="display: none;">
-        <h2>Meet Our Pets</h2>
-        <div class="pet-container">
-            <div class="pet">
-                <img src="images/dog1.jpg" alt="Charlie">
-                <h3>Charlie</h3>
-                <p><strong>Breed:</strong> Labrador Retriever<br><strong>Age:</strong> 3 years<br><strong>Sex:</strong> Male<br>Friendly and energetic, loves playing fetch and being around people.<br>Glendale, Arizona</p>
-            </div>
-            <div class="pet">
-                <img src="images/cat1.jpg" alt="Whiskers">
-                <h3>Whiskers</h3>
-                <p><strong>Breed:</strong> Domestic Shorthair<br><strong>Age:</strong> 2 years<br><strong>Sex:</strong> Female<br>Calm and affectionate, enjoys cuddling and napping in sunny spots.</p>
-            </div>
-            <div class="pet">
-                <img src="images/cupcake.jpg" alt="Cupcake">
-                <h3>Cupcake</h3>
-                <p><strong>Breed:</strong> Pitbull<br><strong>Age:</strong> 1 year<br><strong>Sex:</strong> Male<br>Curious and playful, loves playing with children.</p>
-            </div>
-            <div class="pet">
-                <img src="images/birb1.jpg" alt="Bird">
-                <h3>Sally and Fred</h3>
-                <p><strong>Breed:</strong> Lovebird<br><strong>Age:</strong> 2 year<br><strong>Sex:</strong> Male and Female<br>Curious and playful, loves playing with children.</p>
-            </div>
-            <div class="pet">
-                <img src="images/bunny1.jpg" alt="Bunny">
-                <h3>Jess</h3>
-                <p><strong>Breed:</strong> Bunny<br><strong>Age:</strong> 2 year<br><strong>Sex:</strong> Female<br>Very Fast and playful.</p>
-            </div>
-            <div class="pet">
-                <img src="images/turtle.jpg" alt="Turtle">
-                <h3>Mikey</h3>
-                <p><strong>Breed:</strong> Sonoran Desert Tortoise<br><strong>Age:</strong> 3 year<br><strong>Sex:</strong> Male<br>A fast turtle. And a ninja.</p>
-            </div>
-            <div class="pet">
-                <img src="images/chicken.jpg" alt="chicken">
-                <h3>Gallos</h3>
-                <p><strong>Breed:</strong> Chicken<br><strong>Age:</strong> 2 years<br><strong>Sex:</strong> Male<br>Interesting chicken to have.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Artistry at Your Fingertips</h1>
+            <p>Specializing in Russian Manicures, custom nail art, and luxury gel treatments.</p>
+            <a href="#contact" class="cta-btn">Schedule Appointment</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Service Menu</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Classic Gel Manicure</h3>
+                    <p>Cuticle care, shaping, and long-lasting gel polish application.</p>
+                    <span class="price">$45</span>
+                </div>
+                <div class="service-card">
+                    <h3>Russian Manicure</h3>
+                    <p>High-end dry manicure technique for cleaner cuticles and longer wear.</p>
+                    <span class="price">$65</span>
+                </div>
+                <div class="service-card">
+                    <h3>Acrylic Full Set</h3>
+                    <p>Length and strength with premium acrylic powder. Includes gel polish.</p>
+                    <span class="price">$70+</span>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Nail Art</h3>
+                    <p>Hand-painted designs, chrome, gems, or French tips.</p>
+                    <span class="price">+$5 - $20</span>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Adoption Process Section -->
-    <div id="adoption-process" style="display: none;">
-        <h1>Adoption Process</h1>
-        <div class="card">
-        <h2>Step 1</h2>
-        <p>Find the pet you want on the pet's tab and notate the pet type and age. These are all that are used to determine the price.</p>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80" alt="Nail Tech Working">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left;">Meet Catherine</h2>
+                    <p>Hello! I'm Catherine, a licensed nail technician with a passion for detail. I believe that getting your nails done isn't just maintenance—it's a form of self-expression.</p>
+                    <br>
+                    <p>I specialize in nail health and precision art. Whether you want a clean, professional look or a bold, artistic statement, I am here to bring your vision to life.</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-        <h2>Step 2</h2>
-        <p>Use the form below to calculate the adoption fee. This fee will be the total price of the adoption.</p>
-        <h2>Pet Adoption Fee Calculator</h2>
-        <form id="adoptionForm">
-            <label for="petType">Select Pet Type:</label>
-            <select id="petType" name="petType">
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="rabbit">Rabbit</option>
-                <option value="bird">Bird</option>
-                <option value="turtle">Turtle</option>
-                <option value="chicken">Chicken</option>
-            </select>
-            <label for="petAge">Enter Pet Age (in years):</label>
-            <input type="number" id="petAge" name="petAge" min="0" required>
-            <button type="button" onclick="calculateFee()">Calculate Fee</button>
-        </form>
-        <p id="result"></p>
-        </div>
-        <div class="card">
-        <h2>Step 3</h2>
-        <h2>Go to the contacts page</h2>
-        <p>In the contacts page you can email, text, call, or fill out the message form. Let us know that you wish to adopt the pet. Make sure to include the pet name and age.</p>
-        </div>
-    </div>
+    </section>
 
-    <!-- About Us Section -->
-    <div id="about-us" style="display: none;">
-        <h1>About Us</h1>
-        <div class="card">
-        <h2>We are Pet Adoption Center</h2>
-        <p>We are a nonprofit group that seeks to solve one of Arizona's problems: overcrowding in shelters. Many people don't realize that when a pet is sent to a shelter, the shelter often needs to be divided to allow for more room for pets. To solve this issue, we are tackling this by relying on the community to provide homes for these pets.</p>
-        <img src="images/overcrowding.jpg" alt="shelter" class="large-photo">
-        <p>We will make the difference that these pets need. Whether that be providing a home or a donation to the pet. Here at Pet adoptions we will make sure these pets live a fullfiling life and to do this requires the community.</p>
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=60" alt="Nail Art 1"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=60" alt="Nail Art 2"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=60" alt="Nail Art 3"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=60" alt="Nail Art 4"></div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- News and Events Section -->
-    <div id="news-events" style="display: none;">
-        <h1>News and Events</h1>
-        <h2>Keep up with our latest news and events.</h2>
-        <div class="card">
-        <h3>Adoption Fair</h3>
-        <p><strong>When:</strong> December 10th<br><strong>Where:</strong> Community Park<br>Details: Meet adorable pets and find your perfect match. Enjoy food, music, and activities for all ages!</p>
+    <footer id="contact">
+        <div class="container">
+            <h2>Ready to Book?</h2>
+            <p class="footer-info">To make an appointment, please DM me on Instagram or text/call.</p>
+            <p class="footer-info">📍 123 Beauty Lane, Phoenix, AZ<br>📞 (555) 123-4567</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">TikTok</a>
+            </div>
+            <br>
+            <p style="font-size: 0.8rem; color: #888;">&copy; 2025 Catherine's Nail Studio</p>
         </div>
-        <div class="card">
-        <h3>Fundraiser</h3>
-        <p><strong>When:</strong> January 20th<br><strong>Where:</strong> Downtown Hall<br>Details: Join us for an evening of fun and fundraising to support our mission. Featuring live music, auctions, and more.</p>
-        </div>
-        <div class="card">
-        <h3>Volunteer Appreciation Day</h3>
-        <p><strong>When:</strong> February 15th<br><strong>Where:</strong> Shelter Headquarters<br>Details: A heartfelt thank-you to all our amazing volunteers. Food and recognition awards provided!</p>
-        </div>
-    </div>
+    </footer>
 
-    <!-- Volunteering Section -->
-    <div id="volunteering" style="display: none;">
-        <h1>Volunteering Opportunities</h1>
-        <h2>Volunteers are the heart of our organization. Join us in making a difference in the lives of pets in need.</h2>
-        <h3>Ways You Can Help:</h3>
-        <div class="card">
-        <p><strong>Foster Care:</strong> Provide temporary homes for pets while they await adoption.</p>
-        <img src="images/foster.jpg" alt="foster" class="large-photo">
-        </div>
-        <div class="card">
-        <p><strong>Shelter Assistance:</strong> Help with cleaning, feeding, and caring for the animals.</p>
-        <img src="images/shelter.jpg" alt="shelter" class="large-photo">
-        </div>
-        <div class="card">
-        <p><strong>Transport:</strong> Help us transport pets to and from vet appointments or adoption locations.</p>
-        <img src="images/transport.jpg" alt="shelter" class="large-photo">
-        </div>
-        <p>Ready to make a difference? Click the "Contact Us" tab to get started!</p>
-    </div>
-
-    <!-- Contact Us Section -->
-    <div id="contact-us" style="display: none;">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you! Whether you want to adopt, volunteer, or just say hello, here’s how you can reach us:</p>
-        <p><strong>Address:</strong> 123 Golden Lane, Phoenix, AZ 85001</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> info@petadoption.com</p>
-        <h3>Follow Us on Social Media:</h3>
-        <p>
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a> |
-            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a> |
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-        </p>
-        <h3>Send Us a Message:</h3>
-        <form id="contactForm">
-            <label for="name">Your Name:</label><br>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
-            <label for="email">Your Email:</label><br>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
-            <label for="message">Your Message:</label><br>
-            <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea><br>
-            <button type="submit">Submit</button>
-        </form>
-        
-    </div>
 </body>
 </html>
